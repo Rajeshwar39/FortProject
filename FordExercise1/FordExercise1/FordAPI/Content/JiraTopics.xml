@@ -1,0 +1,59 @@
+﻿ 
+<AskAnalystQueryTypesJira>
+  
+  <Topic>
+    <Name>2940</Name>
+    <Value>11300</Value>
+  </Topic>
+  <Topic>
+    <Name>2941</Name>
+    <Value>11301</Value>
+  </Topic>
+   
+  <Topic>
+    <Name>2942</Name>
+    <Value>11302</Value>
+  </Topic>
+  <Topic>
+    <Name>2943</Name>
+    <Value>11303</Value>
+  </Topic>
+  <Topic>
+    <Name>2944</Name>
+    <Value>11304</Value>
+  </Topic>
+  <Topic>
+    <Name>2945</Name>
+    <Value>11305</Value>
+  </Topic>
+  <Topic>
+    <Name>2946</Name>
+    <Value>11306</Value>
+  </Topic>
+  <Topic>
+    <Name>2947</Name>
+    <Value>11307</Value>
+  </Topic>
+  <Topic>
+    <Name>2948</Name>
+    <Value>11308</Value>
+  </Topic>
+  <Topic>
+    <Name>2950</Name>
+    <Value>11309</Value>
+  </Topic>
+  <Topic>
+    <Name>Content</Name>
+    <Value>11311</Value>
+  </Topic>
+  <Topic name="Account">
+    <Name>Account</Name>
+    <Value>11312</Value>
+  </Topic>
+  <Topic name="Website">
+    <Name>Website</Name>
+    <Value>11313</Value>
+  </Topic>
+  
+</AskAnalystQueryTypesJira>
+

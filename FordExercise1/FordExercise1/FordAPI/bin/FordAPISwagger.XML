@@ -1,0 +1,664 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FordAPI</name>
+    </assembly>
+    <members>
+        <member name="T:FordAPI.Helper.SqlHelper">
+            <summary>
+            The sql helper.
+            </summary>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:FordAPI.Helper.SqlHelper"/> class.
+            </summary>
+        </member>
+        <member name="P:FordAPI.Helper.SqlHelper.GetConnectionString">
+            <summary>
+            Gets connection string.
+            </summary>
+        </member>
+        <member name="P:FordAPI.Helper.SqlHelper.GetDMSConnectionString">
+            <summary>
+            Gets connection string.
+            </summary>
+        </member>
+        <member name="P:FordAPI.Helper.SqlHelper.GetDMSConnectionStringForEsCountry">
+            <summary>
+            Gets connection string.
+            </summary>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.ExecuteNonQuery(System.String,System.Data.CommandType,System.String)">
+            <summary>
+            Execute a SqlCommand (that returns no resultset and takes no parameters) against the database specified in 
+            the connection string.
+            </summary>
+            <param name="connectionString">A valid connection string for a SqlConnection.</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.).</param>
+            <param name="commandText">The stored procedure name or T-SQL command.</param>
+            <returns>An int representing the number of rows affected by the command.</returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.ExecuteNonQuery(System.Data.CommandType,System.String)">
+            <summary>
+            The execute non query.
+            </summary>
+            <param name="commandType">
+            The command type.
+            </param>
+            <param name="commandText">
+            The command text.
+            </param>
+            <returns>
+            Integer value.
+            </returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.ExecuteNonQuery(System.String,System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            Execute a SqlCommand (that returns no resultset) against the database specified in the connection string 
+            using the provided parameters.
+            </summary>
+            <param name="connectionString">A valid connection string for a SqlConnection.</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.).</param>
+            <param name="commandText">The stored procedure name or T-SQL command.</param>
+            <param name="commandParameters">An array of SqlParamters used to execute the command.</param>
+            <returns>An int representing the number of rows affected by the command.</returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.ExecuteNonQuery(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            The execute non query.
+            </summary>
+            <param name="commandType">
+            The command type.
+            </param>
+            <param name="commandText">
+            The command text.
+            </param>
+            <param name="commandParameters">
+            The command parameters.
+            </param>
+            <returns>
+            Integer value.
+            </returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.ExecuteNonQuery(System.String,System.String,System.Object[])">
+            <summary>
+            Execute a stored procedure via a SqlCommand (that returns no resultset) against the database specified in 
+            the connection string using the provided parameter values.  This method will query the database to discover the parameters for the 
+            stored procedure (the first time each stored procedure is called), and assign the values based on parameter order.
+            </summary>
+            <param name="connectionString">A valid connection string for a SqlConnection.</param>
+            <param name="storedProcedureName">The name of the stored prcedure.</param>
+            <param name="parameterValues">An array of objects to be assigned as the input values of the stored procedure.</param>
+            <returns>An int representing the number of rows affected by the command.</returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.ExecuteNonQuery(System.String,System.Object[])">
+            <summary>
+            The execute non query.
+            </summary>
+            <param name="storedProcedureName">
+            The stored procedure name.
+            </param>
+            <param name="parameterValues">
+            The parameter values.
+            </param>
+            <returns>
+            Integer value.
+            </returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.ExecuteNonQuery(System.Data.SqlClient.SqlConnection,System.Data.CommandType,System.String)">
+            <summary>
+            Execute a SqlCommand (that returns no resultset and takes no parameters) against the provided SqlConnection. 
+            </summary>
+            <param name="connection">A valid SqlConnection.</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.).</param>
+            <param name="commandText">The stored procedure name or T-SQL command.</param>
+            <returns>An int representing the number of rows affected by the command.</returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.ExecuteNonQuery(System.Data.SqlClient.SqlConnection,System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            Execute a SqlCommand (that returns no resultset) against the specified SqlConnection 
+            using the provided parameters.
+            </summary>
+            <remarks>
+            e.g.:  
+             int result = ExecuteNonQuery(conn, CommandType.StoredProcedure, "PublishOrders", new SqlParameter("@prodid", 24));
+            </remarks>
+            <param name="connection">A valid SqlConnection.</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.).</param>
+            <param name="commandText">The stored procedure name or T-SQL command.</param>
+            <param name="commandParameters">An array of SqlParamters used to execute the command.</param>
+            <returns>An int representing the number of rows affected by the command.</returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.ExecuteNonQuery(System.Data.SqlClient.SqlConnection,System.String,System.Object[])">
+            <summary>
+            Execute a stored procedure via a SqlCommand (that returns no resultset) against the specified SqlConnection 
+            using the provided parameter values.  This method will query the database to discover the parameters for the 
+            stored procedure (the first time each stored procedure is called), and assign the values based on parameter order.
+            </summary>
+            <param name="connection">A valid SqlConnection.</param>
+            <param name="storedProcedureName">The name of the stored procedure.</param>
+            <param name="parameterValues">An array of objects to be assigned as the input values of the stored procedure.</param>
+            <returns>An int representing the number of rows affected by the command.</returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.ExecuteNonQuery(System.Data.SqlClient.SqlTransaction,System.Data.CommandType,System.String)">
+            <summary>
+            Execute a SqlCommand (that returns no resultset and takes no parameters) against the provided SqlTransaction. 
+            </summary>
+            <param name="transaction">A valid SqlTransaction.</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.).</param>
+            <param name="commandText">The stored procedure name or T-SQL command.</param>
+            <returns>An int representing the number of rows affected by the command.</returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.ExecuteNonQuery(System.Data.SqlClient.SqlTransaction,System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            Execute a SqlCommand (that returns no resultset) against the specified SqlTransaction
+            using the provided parameters.
+            </summary>
+            <param name="transaction">A valid SqlTransaction.</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.).</param>
+            <param name="commandText">The stored procedure name or T-SQL command.</param>
+            <param name="commandParameters">An array of SqlParamters used to execute the command.</param>
+            <returns>An int representing the number of rows affected by the command.</returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.ReplaceSingleQuotes(System.String)">
+            <summary>
+            Replace singe quotes.
+            </summary>
+            <param name="sourceString">
+            The source string.
+            </param>
+            <returns>
+            Returns a string without quotes string.
+            </returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.ReplaceQuotes(System.String)">
+            <summary>
+            The replace quotes.
+            </summary>
+            <param name="sourceString">
+            The string.
+            </param>
+            <returns>
+            Returns a string without quotes.
+            </returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.ExecuteNonQuery(System.Data.SqlClient.SqlTransaction,System.String,System.Object[])">
+            <summary>
+            Execute a stored procedure via a SqlCommand (that returns no resultset) against the specified 
+            SqlTransaction using the provided parameter values.  This method will query the database to discover the parameters for the 
+            stored procedure (the first time each stored procedure is called), and assign the values based on parameter order.
+            </summary>
+            <param name="transaction">A valid SqlTransaction.</param>
+            <param name="storedProcedureName">The name of the stored procedure.</param>
+            <param name="parameterValues">An array of objects to be assigned as the input values of the stored procedure.</param>
+            <returns>An int representing the number of rows affected by the command.</returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.ExecuteDataset(System.String,System.Data.CommandType,System.String)">
+            <summary>
+            Execute a SqlCommand (that returns a resultset and takes no parameters) against the database specified in 
+            the connection string. 
+            </summary>
+            <param name="connectionString">A valid connection string for a SqlConnection.</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.).</param>
+            <param name="commandText">The stored procedure name or T-SQL command.</param>
+            <returns>A dataset containing the resultset generated by the command.</returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.ExecuteDataset(System.Data.CommandType,System.String)">
+            <summary>
+            The execute data set.
+            </summary>
+            <param name="commandType">
+            The command type.
+            </param>
+            <param name="commandText">
+            The command text.
+            </param>
+            <returns>
+            Returns dataset.
+            </returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.ExecuteDataset(System.String,System.String)">
+            <summary>
+            The execute data set.
+            </summary>
+            <param name="conStr">
+            The connection string.
+            </param>
+            <param name="sourceSql">
+            The source sql.
+            </param>
+            <returns>
+            Returns dataset.
+            </returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.ExecuteDataset(System.String,System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            Execute a SqlCommand (that returns a resultset) against the database specified in the connection string 
+            using the provided parameters.
+            </summary>
+            <param name="connectionString">A valid connection string for a SqlConnection.</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.).</param>
+            <param name="commandText">The stored procedure name or T-SQL command.</param>
+            <param name="commandParameters">An array of SqlParamters used to execute the command.</param>
+            <returns>A dataset containing the resultset generated by the command.</returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.ExecuteDataset(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            Teh execute dataset.
+            </summary>
+            <param name="commandType">
+            The command type.
+            </param>
+            <param name="commandText">
+            The command text.
+            </param>
+            <param name="commandParameters">
+            The command parameters.
+            </param>
+            <returns>
+            Returns dataset.
+            </returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.ExecuteDataset(System.String,System.String,System.Object[])">
+            <summary>
+            Execute a stored procedure via a SqlCommand (that returns a resultset) against the database specified in 
+            the connection string using the provided parameter values.  This method will query the database to discover the parameters for the 
+            stored procedure (the first time each stored procedure is called), and assign the values based on parameter order.
+            </summary>
+            <param name="connectionString">A valid connection string for a SqlConnection.</param>
+            <param name="storedProcedureName">The name of the stored procedure.</param>
+            <param name="parameterValues">An array of objects to be assigned as the input values of the stored procedure.</param>
+            <returns>A dataset containing the resultset generated by the command.</returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.ExecuteDataset(System.String,System.Object[])">
+            <summary>
+            The execute dataset.
+            </summary>
+            <param name="storedProcedureName">
+            The stored procedure name.
+            </param>
+            <param name="parameterValues">
+            The parameter values.
+            </param>
+            <returns>
+            Returns dataset.
+            </returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.ExecuteDMSDataset(System.String,System.String,System.Object[])">
+            <summary>
+            The execute dataset.
+            </summary>
+            <param name="storedProcedureName">
+            The stored procedure name.
+            </param>
+            <param name="parameterValues">
+            The parameter values.
+            </param>
+            <returns>
+            Returns dataset.
+            </returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.ExecuteDataset(System.Data.SqlClient.SqlConnection,System.Data.CommandType,System.String)">
+            <summary>
+            Execute a SqlCommand (that returns a resultset and takes no parameters) against the provided SqlConnection. 
+            </summary>
+            <param name="connection">A valid SqlConnection.</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.).</param>
+            <param name="commandText">The stored procedure name or T-SQL command.</param>
+            <returns>A dataset containing the resultset generated by the command.</returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.ExecuteDataset(System.Data.SqlClient.SqlConnection,System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            Execute a SqlCommand (that returns a resultset) against the specified SqlConnection 
+            using the provided parameters.
+            </summary>
+            <param name="connection">A valid SqlConnection.</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.).</param>
+            <param name="commandText">The stored procedure name or T-SQL command.</param>
+            <param name="commandParameters">An array of SqlParamters used to execute the command.</param>
+            <returns>A dataset containing the resultset generated by the command.</returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.ExecuteDataset(System.Data.SqlClient.SqlConnection,System.String,System.Object[])">
+            <summary>
+            Execute a stored procedure via a SqlCommand (that returns a resultset) against the specified SqlConnection 
+            using the provided parameter values.  This method will query the database to discover the parameters for the 
+            stored procedure (the first time each stored procedure is called), and assign the values based on parameter order.
+            </summary>
+            <param name="connection">A valid SqlConnection.</param>
+            <param name="storedProcedureName">The name of the stored procedure.</param>
+            <param name="parameterValues">An array of objects to be assigned as the input values of the stored procedure.</param>
+            <returns>A dataset containing the resultset generated by the command.</returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.ExecuteDataset(System.Data.SqlClient.SqlTransaction,System.Data.CommandType,System.String)">
+            <summary>
+            Execute a SqlCommand (that returns a resultset and takes no parameters) against the provided SqlTransaction. 
+            </summary>
+            <param name="transaction">A valid SqlTransaction.</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.).</param>
+            <param name="commandText">The stored procedure name or T-SQL command.</param>
+            <returns>A dataset containing the resultset generated by the command.</returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.ExecuteDataset(System.Data.SqlClient.SqlTransaction,System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            Execute a SqlCommand (that returns a resultset) against the specified SqlTransaction
+            using the provided parameters.
+            </summary>
+            <param name="transaction">A valid SqlTransaction.</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.).</param>
+            <param name="commandText">The stored procedure name or T-SQL command.</param>
+            <param name="commandParameters">An array of SqlParamters used to execute the command.</param>
+            <returns>A dataset containing the resultset generated by the command.</returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.ExecuteDataset(System.Data.SqlClient.SqlTransaction,System.String,System.Object[])">
+            <summary>
+            Execute a stored procedure via a SqlCommand (that returns a resultset) against the specified 
+            SqlTransaction using the provided parameter values.  This method will query the database to discover the parameters for the 
+            stored procedure (the first time each stored procedure is called), and assign the values based on parameter order.
+            </summary>
+            <param name="transaction">A valid SqlTransaction.</param>
+            <param name="storedProcedureName">The name of the stored procedure.</param>
+            <param name="parameterValues">An array of objects to be assigned as the input values of the stored procedure.</param>
+            <returns>A dataset containing the resultset generated by the command.</returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.ExecuteScalar(System.String,System.Data.CommandType,System.String)">
+            <summary>
+            Execute a SqlCommand (that returns a 1x1 resultset and takes no parameters) against the database specified in 
+            the connection string. 
+            </summary>
+            <param name="connectionString">A valid connection string for a SqlConnection.</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.).</param>
+            <param name="commandText">The stored procedure name or T-SQL command.</param>
+            <returns>An object containing the value in the 1x1 resultset generated by the command.</returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.ExecuteScalar(System.Data.CommandType,System.String)">
+            <summary>
+            The execute scalar.
+            </summary>
+            <param name="commandType">
+            The command type.
+            </param>
+            <param name="commandText">
+            The command text.
+            </param>
+            <returns>
+            Returns scalar value.
+            </returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.ExecuteScalar(System.String,System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            Execute a SqlCommand (that returns a 1x1 resultset) against the database specified in the connection string 
+            using the provided parameters.
+            </summary>
+            <param name="connectionString">A valid connection string for a SqlConnection.</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.).</param>
+            <param name="commandText">The stored procedure name or T-SQL command.</param>
+            <param name="commandParameters">An array of SqlParamters used to execute the command.</param>
+            <returns>An object containing the value in the 1x1 resultset generated by the command.</returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.ExecuteScalar(System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            The execute scalar.
+            </summary>
+            <param name="commandType">The command type.</param>
+            <param name="commandText">The command text.</param>
+            <param name="commandParameters">The command parameters.</param>
+            <returns>Returns scalar value.</returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.ExecuteScalar(System.String,System.Object[])">
+            <summary>
+            The execute scalar.
+            </summary>
+            <param name="storedProcedureName">The stored procedure name.</param>
+            <param name="parameterValues">The prameter values.</param>
+            <returns>Returns scalar value.</returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.ExecuteScalar(System.Data.SqlClient.SqlConnection,System.Data.CommandType,System.String)">
+            <summary>
+            Execute a SqlCommand (that returns a 1x1 resultset and takes no parameters) against the provided SqlConnection. 
+            </summary>
+            <param name="connection">A valid SqlConnection.</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.).</param>
+            <param name="commandText">The stored procedure name or T-SQL command.</param>
+            <returns>An object containing the value in the 1x1 resultset generated by the command.</returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.ExecuteScalar(System.Data.SqlClient.SqlConnection,System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            Execute a SqlCommand (that returns a 1x1 resultset) against the specified SqlConnection 
+            using the provided parameters.
+            </summary>
+            <param name="connection">A valid SqlConnection.</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.).</param>
+            <param name="commandText">The stored procedure name or T-SQL command.</param>
+            <param name="commandParameters">An array of SqlParamters used to execute the command.</param>
+            <returns>An object containing the value in the 1x1 resultset generated by the command.</returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.ExecuteScalar(System.Data.SqlClient.SqlConnection,System.String,System.Object[])">
+            <summary>
+            Execute a stored procedure via a SqlCommand (that returns a 1x1 resultset) against the specified SqlConnection 
+            using the provided parameter values.  This method will query the database to discover the parameters for the 
+            stored procedure (the first time each stored procedure is called), and assign the values based on parameter order.
+            </summary>
+            <param name="connection">A valid SqlConnection.</param>
+            <param name="storedProcedureName">The name of the stored procedure.</param>
+            <param name="parameterValues">An array of objects to be assigned as the input values of the stored procedure.</param>
+            <returns>An object containing the value in the 1x1 resultset generated by the command.</returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.ExecuteScalar(System.Data.SqlClient.SqlTransaction,System.Data.CommandType,System.String)">
+            <summary>
+            Execute a SqlCommand (that returns a 1x1 resultset and takes no parameters) against the provided SqlTransaction. 
+            </summary>
+            <param name="transaction">A valid SqlTransaction.</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.).</param>
+            <param name="commandText">The stored procedure name or T-SQL command.</param>
+            <returns>An object containing the value in the 1x1 resultset generated by the command.</returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.ExecuteScalar(System.Data.SqlClient.SqlTransaction,System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            Execute a SqlCommand (that returns a 1x1 resultset) against the specified SqlTransaction
+            using the provided parameters.
+            </summary>
+            <param name="transaction">A valid SqlTransaction.</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.).</param>
+            <param name="commandText">The stored procedure name or T-SQL command.</param>
+            <param name="commandParameters">An array of SqlParamters used to execute the command.</param>
+            <returns>An object containing the value in the 1x1 resultset generated by the command.</returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.ExecuteScalar(System.Data.SqlClient.SqlTransaction,System.String,System.Object[])">
+            <summary>
+            Execute a stored procedure via a SqlCommand (that returns a 1x1 resultset) against the specified
+            SqlTransaction using the provided parameter values.  This method will query the database to discover the parameters for the 
+            stored procedure (the first time each stored procedure is called), and assign the values based on parameter order.
+            </summary>
+            <param name="transaction">A valid SqlTransaction.</param>
+            <param name="storedProcedureName">The name of the stored procedure.</param>
+            <param name="parameterValues">An array of objects to be assigned as the input values of the stored procedure.</param>
+            <returns>An object containing the value in the 1x1 resultset generated by the command.</returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.CreateParameter(System.String,System.Data.SqlDbType,System.Int32,System.Data.ParameterDirection,System.String)">
+            <summary>
+            The create parameter.
+            </summary>
+            <param name="paramname">
+            The parameter name.
+            </param>
+            <param name="paramtype">
+            The parameter type.
+            </param>
+            <param name="paramsize">
+            The parameter size.
+            </param>
+            <param name="paramdirection">
+            The parameter direction.
+            </param>
+            <param name="paramvalue">
+            The parameter value.
+            </param>
+            <returns>
+            Return sql parameter.
+            </returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.AttachParameters(System.Data.SqlClient.SqlCommand,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            The attach parameters.
+            </summary>
+            <param name="command">
+            The command argument.
+            </param>
+            <param name="commandParameters">
+            The command parameters.
+            </param>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.AssignParameterValues(System.Data.SqlClient.SqlParameter[],System.Data.DataRow)">
+            <summary>
+            This method assigns dataRow column values to an array of SqlParameters.
+            </summary>
+            <param name="commandParameters">Array of SqlParameters to be assigned values.</param>
+            <param name="dataRow">The dataRow used to hold the stored procedure's parameter values.</param>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.AssignParameterValues(System.Data.SqlClient.SqlParameter[],System.Object[])">
+            <summary>
+            This method assigns an array of values to an array of SqlParameters.
+            </summary>
+            <param name="commandParameters">Array of SqlParameters to be assigned values.</param>
+            <param name="parameterValues">Array of objects holding the values to be assigned.</param>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelper.PrepareCommand(System.Data.SqlClient.SqlCommand,System.Data.SqlClient.SqlConnection,System.Data.SqlClient.SqlTransaction,System.Data.CommandType,System.String,System.Data.SqlClient.SqlParameter[],System.Boolean@)">
+            <summary>
+            This method opens (if necessary) and assigns a connection, transaction, command type and parameters 
+            to the provided command.
+            </summary>
+            <param name="command">The SqlCommand to be prepared.</param>
+            <param name="connection">A valid SqlConnection, on which to execute this command.</param>
+            <param name="transaction">A valid SqlTransaction, or 'null'.</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.).</param>
+            <param name="commandText">The stored procedure name or T-SQL command.</param>
+            <param name="commandParameters">An array of SqlParameters to be associated with the command or 'null' if no parameters are required.</param>
+            <param name="mustCloseConnection"><c>True</c> if the connection was opened by the method, otherwose is false.</param>
+        </member>
+        <member name="T:FordAPI.Helper.SqlHelperParameterCache">
+            <summary>
+            The sql helper paramter cache.
+            </summary>
+        </member>
+        <member name="F:FordAPI.Helper.SqlHelperParameterCache.paramCache">
+            <summary>
+            The paramCache.
+            </summary>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelperParameterCache.#ctor">
+            <summary>
+            Prevents a default instance of the <see cref="T:FordAPI.Helper.SqlHelperParameterCache"/> class from being created.
+            </summary>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelperParameterCache.CacheParameterSet(System.String,System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            Add parameter array to the cache.
+            </summary>
+            <param name="connectionString">A valid connection string for a SqlConnection.</param>
+            <param name="commandText">The stored procedure name or T-SQL command.</param>
+            <param name="commandParameters">An array of SqlParamters to be cached.</param>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelperParameterCache.GetCachedParameterSet(System.String,System.String)">
+            <summary>
+            Retrieve a parameter array from the cache.
+            </summary>
+            <param name="connectionString">A valid connection string for a SqlConnection.</param>
+            <param name="commandText">The stored procedure name or T-SQL command.</param>
+            <returns>An array of SqlParamters.</returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelperParameterCache.GetSpParameterSet(System.String,System.String)">
+            <summary>
+            Retrieves the set of SqlParameters appropriate for the stored procedure.
+            </summary>
+            <param name="connectionString">A valid connection string for a SqlConnection.</param>
+            <param name="storedProcedureName">The name of the stored procedure.</param>
+            <returns>An array of SqlParameters.</returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelperParameterCache.GetSpParameterSet(System.String,System.String,System.Boolean)">
+            <summary>
+            Retrieves the set of SqlParameters appropriate for the stored procedure.
+            </summary>
+            <param name="connectionString">A valid connection string for a SqlConnection.</param>
+            <param name="storedProcedureName">The name of the stored procedure.</param>
+            <param name="includeReturnValueParameter">A bool value indicating whether the return value parameter should be included in the results.</param>
+            <returns>An array of SqlParameters.</returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelperParameterCache.GetSpParameterSet(System.Data.SqlClient.SqlConnection,System.String)">
+            <summary>
+            Retrieves the set of SqlParameters appropriate for the stored procedure.
+            </summary>
+            <param name="connection">A valid SqlConnection object.</param>
+            <param name="storedProcedureName">The name of the stored procedure.</param>
+            <returns>An array of SqlParameters.</returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelperParameterCache.GetSpParameterSet(System.Data.SqlClient.SqlConnection,System.String,System.Boolean)">
+            <summary>
+            Retrieves the set of SqlParameters appropriate for the stored procedure.
+            </summary>
+            <remarks>
+            This method will query the database for this information, and then store it in a cache for future requests.
+            </remarks>
+            <param name="connection">A valid SqlConnection object.</param>
+            <param name="storedProcedureName">The name of the stored procedure.</param>
+            <param name="includeReturnValueParameter">A bool value indicating whether the return value parameter should be included in the results.</param>
+            <returns>An array of SqlParameters.</returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelperParameterCache.GetSpParameterSetInternal(System.Data.SqlClient.SqlConnection,System.String,System.Boolean)">
+            <summary>
+            Retrieves the set of SqlParameters appropriate for the stored procedure.
+            </summary>
+            <param name="connection">A valid SqlConnection object.</param>
+            <param name="storedProcedureName">The name of the stored procedure.</param>
+            <param name="includeReturnValueParameter">A bool value indicating whether the return value parameter should be included in the results.</param>
+            <returns>An array of SqlParameters.</returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelperParameterCache.DiscoverSpParameterSet(System.Data.SqlClient.SqlConnection,System.String,System.Boolean)">
+            <summary>
+            Resolve at run time the appropriate set of SqlParameters for a stored procedure.
+            </summary>
+            <param name="connection">A valid SqlConnection object.</param>
+            <param name="storedProcedureName">The name of the stored procedure.</param>
+            <param name="includeReturnValueParameter">Whether or not to include their return value parameter.</param>
+            <returns>The parameter array discovered.</returns>
+        </member>
+        <member name="M:FordAPI.Helper.SqlHelperParameterCache.CloneParameters(System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            Deep copy of cached SqlParameter array.
+            </summary>
+            <param name="originalParameters">The original parameters.</param>
+            <returns>Returns sql paratemeter array.</returns>
+        </member>
+        <member name="T:FordAPI.Helper.ModHelper">
+            <summary>
+            The ModHelper.
+            </summary>
+        </member>
+        <member name="M:FordAPI.Helper.ModHelper.CreateParameter(System.String,System.Data.SqlDbType,System.Int32,System.Data.ParameterDirection,System.Object)">
+            <summary>
+            The sql parameter.
+            </summary>
+            <param name="paramname">The parameter name.</param>
+            <param name="paramtype">The parameter type.</param>
+            <param name="paramsize">The parameter size.</param>
+            <param name="paramdirection">The parameter direction.</param>
+            <param name="paramvalue">The parameter value.</param>
+            <returns>Returns sql parameter.</returns>
+        </member>
+        <member name="M:FordAPI.Helper.ModHelper.CreateParameter(System.String,System.Data.SqlDbType,System.Int32,System.Data.ParameterDirection)">
+            <summary>
+            The create parameter.
+            </summary>
+            <param name="paramname">The parameter name.</param>
+            <param name="paramtype">The parameter type.</param>
+            <param name="paramsize">The parameter size.</param>
+            <param name="paramdirection">The parameter direction.</param>
+            <returns>Returns sql parameter.</returns>
+        </member>
+        <member name="T:DBMethods">
+            <summary>
+            Summary description for DBMethods
+            </summary>
+        </member>
+    </members>
+</doc>
